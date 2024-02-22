@@ -26,12 +26,12 @@ function getCurrentDate() {
 }
 
 // Get all products
-let getProducts = (req, res) => {
+const getProducts = (req, res) => {
   res.json(products);
 };
 
 // Get a specific product by SKU ID
-let getProductById = (req, res) => {
+const getProductById = (req, res) => {
   const skuid = req.params.id;
   const product = products.find((p) => p.skuid === skuid);
   if (product) {
@@ -42,7 +42,7 @@ let getProductById = (req, res) => {
 };
 
 // Create a new product
-let createProduct = (req, res) => {
+const createProduct = (req, res) => {
   const { merchant, productname, productdescription, productprice } = req.body;
   const newProduct = {
     merchant,
@@ -57,7 +57,7 @@ let createProduct = (req, res) => {
 };
 
 // Delete a product by SKU ID
-let deleteProduct = (req, res) => {
+const deleteProduct = (req, res) => {
   const skuid = req.params.id;
   const newProducts = products.filter((p) => p.skuid !== skuid);
   if (newProducts.length < products.length) {
@@ -69,7 +69,7 @@ let deleteProduct = (req, res) => {
 };
 
 // Update a product by SKU ID
-let updateProduct = (req, res) => {
+const updateProduct = (req, res) => {
   const skuid = req.params.id;
   const { productname, productdescription, productprice } = req.body;
   const index = products.findIndex((p) => p.skuid === skuid);
